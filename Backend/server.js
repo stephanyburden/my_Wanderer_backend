@@ -8,7 +8,7 @@ const app = express();
 // app.use(cors())
 // app.use(express.json())
 
-// app.use('/api/city', cityController)
+app.use('/api/city', cityController)
 
 app.listen(port, () => {
     console.log(`Brb, journeying across port ${port}`)
