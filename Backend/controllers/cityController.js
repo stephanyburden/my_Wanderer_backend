@@ -22,7 +22,7 @@ router.get('/:id', (req,res) => {
 router.post('/', (req, res) => {
     db.City.create(req.body, (err, savedCity) => {
       if (err) return console.log(err);
-      
+      console.log(req.body)
       res.json(savedCity);
     });
   });

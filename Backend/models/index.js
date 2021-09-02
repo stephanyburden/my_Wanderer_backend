@@ -1,12 +1,13 @@
 const mongoose = require('mongoose');
+const CityJSModels = require('./City')
 
 const connectionString = process.env.MONGODB_URI || 'mongodb://localhost:27017/wayfarer';
 
 const configOptions = {
   useNewUrlParser: true,
-  useCreateIndex: true,
+  /* useCreateIndex: true, */
   useUnifiedTopology: true,
-  useFindAndModify: false,
+  /* useFindAndModify: false, */
 };
 
 // Connects to MongoDB
@@ -16,5 +17,6 @@ mongoose.connect(connectionString, configOptions)
 
 //export to controller
 module.exports = {
-    City: require('./City')
+    City:CityJSModels.City,
+    Posts:CityJSModels.Posts
 };
