@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
-const CityJSModels = require('./City')
+// const CityJSModels = require('./City')
 
+
+//our address for our database --> wayfarer is the name of the DATABASE
 const connectionString = process.env.MONGODB_URI || 'mongodb://localhost:27017/wayfarer';
 
 const configOptions = {
@@ -16,7 +18,12 @@ mongoose.connect(connectionString, configOptions)
   .catch((err) => console.log(`MongoDB connection error: ${err}`));
 
 //export to controller
+// module.exports = {
+//     City:CityJSModels.City,
+//     Posts:CityJSModels.Posts
+// };
+
 module.exports = {
-    City:CityJSModels.City,
-    Posts:CityJSModels.Posts
-};
+  City: require('./City.js'),
+  Post: require('./Post.js')
+}

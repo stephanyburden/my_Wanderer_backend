@@ -8,6 +8,8 @@ router.get('/', (req, res) => {
         res.json(foundCity)
     })
 })
+
+
 //show route --> data for one city
 router.get('/:id', (req,res) => {
     db.City.findById(req.params.id, (err,foundCity) => {
@@ -20,10 +22,10 @@ router.get('/:id', (req,res) => {
 
 //post route --> create a city
 router.post('/', (req, res) => {
-    db.City.create(req.body, (err, savedCity) => {
+    db.City.create(req.body, (err, createdCity) => {
       if (err) return console.log(err);
       console.log(req.body)
-      res.json(savedCity);
+      res.json(createdCity);
     });
   });
 
@@ -34,7 +36,7 @@ router.put('/:id', (req, res) => {
       req.params.id,
       req.body,
       {new: true},
-      (err, updatedCity) => { // 
+      (err, updatedCity) => { 
         if (err) return console.log(err);
         
         res.json(updatedCity);
