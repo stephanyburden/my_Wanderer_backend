@@ -3,9 +3,9 @@ const db = require('../models');
 
 //index route --> return data for all posts
 router.get('/:cityId/posts', (req, res) => {
-    db.Post.find({}, (err, foundPost) => {
+    db.City.findById(req.params.cityId, (err, foundCity) => {
         if (err) return console.log(err);
-        res.json(foundPost)
+        res.json(foundCity.posts)
     })
 });
 
@@ -24,7 +24,7 @@ router.post('/:cityId/posts', (req,res) => {
 
         //finds the corresponding city and adds the post
         db.City.findByIdAndUpdate(
-            foundCity,
+            req.params.cityId,
             {$push: {posts: createdPost} },
             (err, updatedCity) => {
                 if (err) return console.log(err)
@@ -32,7 +32,7 @@ router.post('/:cityId/posts', (req,res) => {
         )
 
 
-        console.log(req.body)
+        console.log(createdPost)
         res.json(createdPost)
     })
 })

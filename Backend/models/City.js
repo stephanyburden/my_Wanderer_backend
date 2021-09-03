@@ -6,8 +6,8 @@ const citySchema = new Schema({
     picture: String,
     //below we'll push in posts based on their database id 
     posts: [
-        {type: mongoose.Schema.Types.ObjectId,
-        ref: 'Post'}
+        /* {type: mongoose.Schema.Types.ObjectId,
+        ref: 'Post'} */
     ],
 })
 
