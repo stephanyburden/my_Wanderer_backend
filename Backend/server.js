@@ -24,9 +24,11 @@ app.use(express.json())
 
 //Controllers --> our url will be localhost:4000/api/city or /api/post
 app.use('/api/city', cityController)
-app.use('/api/post', postController)
+//creates the same base layer url for the city so we can pass the id of it easily
+app.use('/api/city', postController)
 
 
 app.listen(port, () => {
-    console.log(`Brb, journeying across port ${port}`)
+    console.log(`Brb, journeying across port ${port}`);
+    rowdyResults.print()
 })

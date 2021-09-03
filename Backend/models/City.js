@@ -1,24 +1,20 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-
-const PostSchema = new Schema({
-    title: String,
-    content: String,
-    user: String,
-    date: Date
+const citySchema = new Schema({
+    name: String,
+    picture: String,
+    //below we'll push in posts based on their database id 
+    posts: [
+        {type: mongoose.Schema.Types.ObjectId,
+        ref: 'Post'}
+    ],
 })
-const CitySchema = new Schema({
-    Name: String,
-    Photo: String,
-    post: [PostSchema]
-})
-const City = mongoose.model('City', CitySchema);
-const Posts = mongoose.model('Post', PostSchema)
 
-module.exports = {
-    City:City,
-    Posts:Posts
-}
+const City = mongoose.model('City', citySchema);
+
+module.exports = City;
+
+
 
 
