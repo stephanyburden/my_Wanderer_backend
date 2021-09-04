@@ -17,12 +17,8 @@ mongoose.connect(connectionString, configOptions)
   .then(() => console.log('MongoDB successfully connected...'))
   .catch((err) => console.log(`MongoDB connection error: ${err}`));
 
-//export to controller
-// module.exports = {
-//     City:CityJSModels.City,
-//     Posts:CityJSModels.Posts
-// };
-
+  
+//exports the below as the collections to the controller
 module.exports = {
   City: require('./City.js'),
   Post: require('./Post.js')

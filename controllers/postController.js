@@ -41,7 +41,9 @@ router.post('/:cityId/posts', (req,res) => {
 ////////////////////after MVP
 //update route
 
-//delete route
+//delete route 
+    //will we want to make sure that we delete its place in the City's posts array too, or is that 
+        //automatically done when we delete a singular post?
 
 
 
