@@ -1,0 +1,36 @@
+{
+    "cities": [
+        {
+            "name": "Gaborone, Botswana",
+            "picture": "https://i.imgur.com/3qPdl0mm.jpg",
+            "posts": {
+                "title": "This one time in Gaborone",
+                "content": "I never finished the story"
+            }
+        },
+        {
+            "name": "Amsterdam, Netherlands",
+            "picture": "https://i.imgur.com/HItfJSkm.jpg",
+            "posts": {
+                "title": "This one time in Amsterdam",
+                "content": "I never finished the story"
+            }
+        },
+        {
+            "name": "Thimpu, Bhutan",
+            "picture": "https://i.imgur.com/mII9dl5m.jpg",
+            "posts": {
+                "title": "This one time in Thimpu",
+                "content": "I never finished the story"
+            }
+        },
+        {
+            "name": "Valdivia, Chile",
+            "picture": "https://i.imgur.com/WzMz0KLm.jpg",
+            "posts": {
+                "title": "This one time in Valdivia",
+                "content": "I never finished the story"
+            }
+        }
+    ]
+}
