@@ -14,7 +14,6 @@ router.get('/', (req, res) => {
 router.get('/:id', (req,res) => {
     db.City.findById(req.params.id, (err,foundCity) => {
         if (err) return console.log(err);
-
         res.json(foundCity);
     });
 })

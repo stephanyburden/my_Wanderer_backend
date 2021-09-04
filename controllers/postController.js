@@ -25,14 +25,14 @@ router.post('/:cityId/posts', (req,res) => {
         //finds the corresponding city and adds the post
         db.City.findByIdAndUpdate(
             req.params.cityId,
+            //$push is a convention of mongoose
+            //we push our createdPost, as the value, into the posts key of the
+                //city schemas object
             {$push: {posts: createdPost} },
             (err, updatedCity) => {
                 if (err) return console.log(err)
             }
         )
-
-
-        console.log(createdPost)
         res.json(createdPost)
     })
 })
