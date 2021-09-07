@@ -18,7 +18,7 @@ router.get('/:cityId/posts/:postsId', (req, res) => {
 })
 
 //post route --> creates post
-router.post('/:cityId/posts', (req,res) => {
+router.post('/:cityId/posts', (req, res) => {
     db.Post.create(req.body, (err, createdPost) => {
         if (err) return console.log(err);
 
@@ -27,8 +27,8 @@ router.post('/:cityId/posts', (req,res) => {
             req.params.cityId,
             //$push is a convention of mongoose
             //we push our createdPost, as the value, into the posts key of the
-                //city schemas object
-            {$push: {posts: createdPost} },
+            //city schemas object
+            { $push: { posts: createdPost } },
             (err, updatedCity) => {
                 if (err) return console.log(err)
             }
@@ -41,33 +41,52 @@ router.post('/:cityId/posts', (req,res) => {
 //update route --> update a city
 router.put('/:cityId/posts/:postsId', (req, res) => {
     db.Post.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      {new: true},
-      (err, updatedPost) => { 
-        if (err) return console.log(err);
-        
-        res.json(updatedPost);
-      });
-  });
+        req.params.id,
+        req.body,
+        { new: true },
+        (err, updatedPost) => {
+            if (err) return console.log(err);
+
+            res.json(updatedPost);
+        });
+});
 
 
 
 //delete route --> delete a city
 router.delete('/:cityId/posts/:postsId', (req, res) => {
-    db.Post.findByIdAndDelete(req.params.id, (err, deletedPost) => {
+    /* db.Post.findByIdAndUpdate(req.params.postsId, (err, deletedPost) => {
         if (err) return console.log(err);
-        res.json("We deleted this")
+        console.log(deletedPost)
+        res.json(deletedPost)
+    }) */
+    db.Post.findByIdAndDelete(req.params.postsId, (err, foundPost) => {
+        console.log(foundPost)
+        db.City.findByIdAndUpdate(
+            req.params.cityId,
+            //$push is a convention of mongoose
+            //we push our createdPost, as the value, into the posts key of the
+            //city schemas object
+            { $pull: { posts: foundPost } },
+            (err, updatedCity) => {
+                if (err) return console.log(err)
+                res.json(foundPost)
+            }
+        )        
     })
+
+
 })
+
+
 
 
 ////////////////////after MVP
 //update route
 
 //delete route 
-    //will we want to make sure that we delete its place in the City's posts array too, or is that 
-        //automatically done when we delete a singular post?
+//will we want to make sure that we delete its place in the City's posts array too, or is that 
+//automatically done when we delete a singular post?
 
 
 
