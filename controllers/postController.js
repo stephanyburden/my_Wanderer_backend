@@ -32,7 +32,10 @@ router.post('/:cityId/posts', (req, res) => {
             (err, updatedCity) => {
                 if (err) return console.log(err)
             }
-        )
+        ).catch(err =>{
+            console.log(err)
+            res.json({message:"custom error message"})
+        })
         res.json(createdPost)
     })
 })
@@ -41,13 +44,43 @@ router.post('/:cityId/posts', (req, res) => {
 //update route --> update a city
 router.put('/:cityId/posts/:postsId', (req, res) => {
     db.Post.findByIdAndUpdate(
-        req.params.id,
+        req.params.postsId,
         req.body,
         { new: true },
         (err, updatedPost) => {
             if (err) return console.log(err);
 
-            res.json(updatedPost);
+            /* res.json(updatedPost); */
+            db.City.findById(req.params.cityId, (err, foundCity) => {
+                /* console.log("req")
+                console.log(req.params)
+                console.log("foundcity")
+                console.log(foundCity) */
+                const postindex = foundCity.posts.findIndex((post) => post._id == updatedPost._id)
+                foundCity.posts[postindex] = updatedPost
+                console.log("updatedPost")
+                console.log(updatedPost)
+                let newPosts = foundCity.posts[postindex]
+                console.log("foundCity.posts[postindex]")
+                console.log(foundCity.posts[postindex])
+                db.City.findByIdAndUpdate(
+                    req.params.cityId,
+                    { $set: { posts: newPosts } },
+                    (err, updatedCity) => {
+                        if (err) return console.log(err)
+                        res.json(updatedPost)
+                    }
+                );
+            })
+
+            /* db.City.findByIdAndUpdate(
+                req.params.cityId,
+                { $set: { posts: updatedPost } },
+                (err, updatedCity) => {
+                    if (err) return console.log(err)
+                    res.json(foundPost)
+                }
+            ) */
         });
 });
 
@@ -72,7 +105,7 @@ router.delete('/:cityId/posts/:postsId', (req, res) => {
                 if (err) return console.log(err)
                 res.json(foundPost)
             }
-        )        
+        )
     })
 
 
