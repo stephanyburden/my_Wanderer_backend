@@ -38,6 +38,30 @@ router.post('/:cityId/posts', (req,res) => {
 })
 
 
+//update route --> update a city
+router.put('/:cityId/posts/:postsId', (req, res) => {
+    db.Post.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      {new: true},
+      (err, updatedPost) => { 
+        if (err) return console.log(err);
+        
+        res.json(updatedPost);
+      });
+  });
+
+
+
+//delete route --> delete a city
+router.delete('/:cityId/posts/:postsId', (req, res) => {
+    db.Post.findByIdAndDelete(req.params.id, (err, deletedPost) => {
+        if (err) return console.log(err);
+        res.json("We deleted this")
+    })
+})
+
+
 ////////////////////after MVP
 //update route
 
