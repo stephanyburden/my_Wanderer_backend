@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
+    "debug": "^4.3.2",
     "express": "^4.17.1",
     "mongoose": "^6.0.4",
     "rowdy-logger": "^1.0.2"

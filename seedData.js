@@ -14,10 +14,10 @@ const { City, Post } = require('./models');
 async function seedCities() {
     console.log('Seeding cities...');
     const cities = [
-        {name: "Gaborone, Botswana", picture: "https://i.imgur.com/3qPdl0mm.jpg"},
-        {name: "Amsterdam, Netherlands", picture: "https://i.imgur.com/HItfJSkm.jpg"},
-        {name: "Thimpu, Bhutan", picture: "https://i.imgur.com/mII9dl5m.jpg"},
-        {name: "Valdivia, Chile", picture: "https://i.imgur.com/WzMz0KLm.jpg"}
+        {name: "Gaborone, Botswana", picture: "https://i.imgur.com/RZP0PqGl.jpg"},
+        {name: "Amsterdam, Netherlands", picture: "https://i.imgur.com/vYDGhXBl.jpg"},
+        {name: "Thimpu, Bhutan", picture: "https://i.imgur.com/AlWK15ml.jpg"},
+        {name: "Valdivia, Chile", picture: "https://i.imgur.com/WgstwmJl.jpg"}
     ];
   
     //goes through the cities array and makes new City data for each item in the array
