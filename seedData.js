@@ -14,10 +14,12 @@ const { City, Post } = require('./models');
 async function seedCities() {
     console.log('Seeding cities...');
     const cities = [
-        {name: "Gaborone, Botswana", picture: "https://i.imgur.com/RZP0PqGl.jpg"},
-        {name: "Amsterdam, Netherlands", picture: "https://i.imgur.com/vYDGhXBl.jpg"},
+        {name: "Gaborone, Botswana", picture: "https://i.imgur.com/S7h9yibl.jpg"},
+        {name: "Amsterdam, Netherlands", picture: "https://i.imgur.com/o5tBDfpl.jpg"},
         {name: "Thimpu, Bhutan", picture: "https://i.imgur.com/AlWK15ml.jpg"},
-        {name: "Valdivia, Chile", picture: "https://i.imgur.com/WgstwmJl.jpg"}
+        {name: "Valdivia, Chile", picture: "https://i.imgur.com/WgstwmJl.jpg"},
+        {name: "Cologne, Germany", picture: "https://i.imgur.com/2nbHRtBl.jpg"},
+        {name: "Kathmandu, Nepal", picture: "https://i.imgur.com/NmeSuq0l.jpg"}
     ];
   
     //goes through the cities array and makes new City data for each item in the array
@@ -35,6 +37,8 @@ async function seedCities() {
     const amsterdam = await City.findOne({ name: 'Amsterdam, Netherlands'});
     const thimpu = await City.findOne({name: 'Thimpu, Bhutan'})
     const valdivia = await City.findOne({name: 'Valdivia, Chile'})
+    const cologne = await City.findOne({name: 'Cologne, Germany'})
+    const kathmandu = await City.findOne({name: 'Kathmandu, Nepal'})
     
     //variables that will be Post data
     let post1 = new Post({title: "This one time in...", content: "I never finished the story"})
@@ -49,12 +53,16 @@ async function seedCities() {
     amsterdam.posts.push(post2)
     thimpu.posts.push(post1, post2)
     valdivia.posts.push(post1)
+    cologne.posts.push(post1)
+    kathmandu.posts.push(post1)
   
     //updates the cities with their new post data
     await gaborone.save();
     await amsterdam.save();
     await thimpu.save();
     await valdivia.save();
+    await cologne.save();
+    await kathmandu.save();
   }
   
   seedCities();
