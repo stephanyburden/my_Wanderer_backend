@@ -14,7 +14,7 @@ const { City, Post } = require('./models');
 async function seedCities() {
     console.log('Seeding cities...');
     const cities = [
-        {name: "Gaborone, Botswana", picture: "https://i.imgur.com/S7h9yibl.jpg"},
+        {name: "Gaborone, Botswana", picture: "https://i.imgur.com/vSJOt5Yl.jpg"},
         {name: "Amsterdam, Netherlands", picture: "https://i.imgur.com/o5tBDfpl.jpg"},
         {name: "Thimpu, Bhutan", picture: "https://i.imgur.com/AlWK15ml.jpg"},
         {name: "Valdivia, Chile", picture: "https://i.imgur.com/WgstwmJl.jpg"},
