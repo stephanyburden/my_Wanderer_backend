@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express'); //calling in express our middleware middleman
 const cors = require('cors'); //the calling card between our front end and back end
 const rowdy = require('rowdy-logger') //helps us visually see our routes
@@ -10,7 +11,7 @@ const postController = require('./controllers/postController.js')
 
 
 //Configuration
-const port = 4000;
+const port = process.env.PORT || 4000;
 const app = express();
 const rowdyResults = rowdy.begin(app)
 app.use(cors())
