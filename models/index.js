@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-// const CityJSModels = require('./City')
+require('dotenv').config();
 
 
 //our address for our database --> wayfarer is the name of the DATABASE
@@ -14,8 +14,9 @@ const configOptions = {
 
 // Connects to MongoDB
 mongoose.connect(connectionString, configOptions)
-  .then(() => console.log('MongoDB successfully connected...'))
+  .then(() => console.log('MongoDB successfully connected...' + mongoose.connection.host + ":" + mongoose.connection.port))
   .catch((err) => console.log(`MongoDB connection error: ${err}`));
+
 
   
 //exports the below as the collections to the controller
